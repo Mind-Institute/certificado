@@ -162,6 +162,7 @@
     const fullName = params.get('nome') || '';
     const email = params.get('email') || '';
     const course = params.get('curso') || params.get('certificado') || '';
+    const groupId = params.get('group_id') || '';
     const source = params.get('source') || 'mind-journey-email';
 
     document.getElementById('name').textContent = fullName || firstName || 'Não informado';
@@ -174,6 +175,7 @@
         nome: fullName,
         email: email,
         curso: course,
+        group_id: groupId,
         source: source,
         timestamp: new Date().toISOString(),
         page_url: window.location.href
