@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emissão de Certificado, Mind Institute</title>
+  <style>
+    :root {
+      --mind-green: #68EE95;
+      --mind-orange: #FF7057;
+      --mind-purple: #9843FF;
+      --text: #111111;
+      --muted: #5f5f5f;
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --border: #e7e7e2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      margin-bottom: 32px;
+      line-height: 1;
+    }
+
+    .logo img {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin: 0 0 16px 0;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(104,238,149,0.12);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--mind-green);
+      animation: pulse 1.2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.55; }
+    }
+
+    .details {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-row {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .detail-row strong {
+      display: inline-block;
+      min-width: 70px;
+    }
+
+    .error {
+      background: rgba(255,112,87,0.12);
+      border: 1px solid rgba(255,112,87,0.25);
+      padding: 16px;
+      border-radius: 16px;
+      margin-top: 20px;
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">
+      <img src="logo.png" alt="Mind" />
+    </div>
+
+    <div id="success-content">
+      <div class="status">
+        <span class="dot"></span>
+        Processando emissão
+      </div>
+
+      <h1>Seu certificado está sendo emitido</h1>
+
+      <p>Recebemos sua confirmação com sucesso. Você receberá um novo e-mail com acesso ao seu certificado em instantes.</p>
+      <p class="muted">Se não localizar a mensagem, verifique também sua caixa de spam, promoções ou lixo eletrônico.</p>
+
+      <div class="details">
+        <div class="detail-row"><strong>Nome:</strong> <span id="name">Carregando...</span></div>
+        <div class="detail-row"><strong>Email:</strong> <span id="email">Carregando...</span></div>
+        <div class="detail-row"><strong>Certificado:</strong> <span id="course">Carregando...</span></div>
+      </div>
+    </div>
+
+    <div id="error-content" class="hidden">
+      <h1>Não foi possível processar sua solicitação</h1>
+      <p>Houve um problema ao confirmar os seus dados para emissão do certificado.</p>
+      <div class="error">
+        <p style="margin:0;"><strong>O que fazer agora:</strong> responda ao e-mail que você recebeu informando seu nome completo e e-mail corretos, para que nossa equipe possa concluir a emissão.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/24740331/uj5wo99/';
+
+    const params = new URLSearchParams(window.location.search);
+    const firstName = params.get('primeiro_nome') || '';
+    const fullName = params.get('nome') || '';
+    const email = params.get('email') || '';
+    const course = params.get('curso') || params.get('certificado') || '';
+    const source = params.get('source') || 'mind-journey-email';
+
+    document.getElementById('name').textContent = fullName || firstName || 'Não informado';
+    document.getElementById('email').textContent = email || 'Não informado';
+    document.getElementById('course').textContent = course || 'Não informado';
+
+    async function sendToZapier() {
+      const payload = {
+        primeiro_nome: firstName,
+        nome: fullName,
+        email: email,
+        curso: course,
+        source: source,
+        timestamp: new Date().toISOString(),
+        page_url: window.location.href
+      };
+
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload),
+          mode: 'no-cors'
+        });
+      } catch (error) {
+        document.getElementById('success-content').classList.add('hidden');
+        document.getElementById('error-content').classList.remove('hidden');
+      }
+    }
+
+    sendToZapier();
+  </script>
+</body>
+</html>
