@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: #fafafa;
+  color: #111111;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+  outline: 2px solid #68ee95;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for textareas/iframes */
+textarea {
+  font-feature-settings: "kern", "liga";
+}
