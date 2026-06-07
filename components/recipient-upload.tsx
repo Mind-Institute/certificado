@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Papa from "papaparse";
-import { FileUp, Loader2, X } from "lucide-react";
+import { FileUp, Loader2, X, Download } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useToast } from "@/components/toast";
 
@@ -41,6 +41,26 @@ export function RecipientUpload({
     setRows([]);
     setErrors([]);
     if (fileRef.current) fileRef.current.value = "";
+  }
+
+  function downloadTemplate() {
+    const content =
+      "primeiro_nome,email,nome_certificado\n" +
+      "Maria,maria@empresa.com,Maria Silva Santos\n" +
+      "João,joao@empresa.com,João Pereira de Souza\n" +
+      "Ana,ana@empresa.com,Ana Carolina Ribeiro\n";
+    // BOM (﻿) garante que acentos apareçam certos ao abrir no Excel
+    const blob = new Blob(["﻿" + content], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "modelo_certificados.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   }
 
   function onFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -117,23 +137,52 @@ export function RecipientUpload({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-sm text-gray-600">
-          Envie um CSV com colunas: <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded">primeiro_nome</code>,{" "}
-          <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded">email</code>,{" "}
-          <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded">nome_certificado</code>
-        </p>
-        <label className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 cursor-pointer">
-          <FileUp size={14} />
-          Selecionar arquivo
-          <input
-            ref={fileRef}
-            type="file"
-            accept=".csv,text/csv"
-            onChange={onFile}
-            className="hidden"
-          />
-        </label>
+      <div className="space-y-3">
+        <div className="rounded-md border border-gray-200 bg-gray-50 p-3 text-sm text-gray-600">
+          <p className="mb-1.5 font-medium text-brand-black">
+            A planilha precisa ter exatamente estas 3 colunas:
+          </p>
+          <ul className="list-disc space-y-0.5 pl-5 text-xs">
+            <li>
+              <code className="rounded border bg-white px-1.5 py-0.5">primeiro_nome</code>{" "}
+              — primeiro nome (usado na saudação do e-mail)
+            </li>
+            <li>
+              <code className="rounded border bg-white px-1.5 py-0.5">email</code>{" "}
+              — e-mail de quem recebe o certificado
+            </li>
+            <li>
+              <code className="rounded border bg-white px-1.5 py-0.5">nome_certificado</code>{" "}
+              — nome completo que aparece no certificado
+            </li>
+          </ul>
+          <p className="mt-2 text-xs text-gray-500">
+            Não sabe montar? Baixe o modelo, troque os exemplos pelos dados
+            reais e salve.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={downloadTemplate}
+            className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium hover:bg-gray-50"
+          >
+            <Download size={14} />
+            Baixar modelo de planilha
+          </button>
+          <label className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium hover:bg-gray-50">
+            <FileUp size={14} />
+            Selecionar arquivo
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".csv,text/csv"
+              onChange={onFile}
+              className="hidden"
+            />
+          </label>
+        </div>
       </div>
 
       {parsing && (
