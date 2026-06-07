@@ -121,7 +121,7 @@ export default function TemplatesPage() {
     <div className="p-8 max-w-7xl mx-auto">
       <header className="flex items-start justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-semibold">Templates de curso</h1>
+          <h1 className="text-2xl font-semibold">Comunicação para Envio de Certificados</h1>
           <p className="text-sm text-gray-500 mt-1">
             Configure os emails de cada grupo do Accredible. Cards verdes já
             estão prontos pra emitir, cards cinza precisam dos textos dos emails.
