@@ -1,0 +1,454 @@
+<!-- ============================================================= -->
+<!--  MIND SUMMIT — Tabela comparativa de ingressos               -->
+<!--  Bloco autossuficiente: cole num bloco "HTML personalizado"  -->
+<!--  do WordPress (Gutenberg) ou num widget HTML do Elementor.   -->
+<!--                                                               -->
+<!--  1) LINKS DE COMPRA: troque os href="#" dos botões "Comprar" -->
+<!--     pela URL de checkout de cada ingresso (procure data-checkout). -->
+<!--                                                               -->
+<!--  2) FONTE: usa "Satoshi" (fonte da marca). O tema do site já  -->
+<!--     carrega Satoshi; se por acaso não carregar nesta página,  -->
+<!--     garanta o @font-face do tema. Fallback: Inter / system.   -->
+<!--                                                               -->
+<!--  Cores oficiais (Figma): Prime #9843FF · VIP #FF7057 ·        -->
+<!--  Business #2C2D3D · Mind #68EE95 · texto #13131A · fundo #FFF -->
+<!-- ============================================================= -->
+
+<div class="mind-tc">
+  <div class="mind-tc__scroll">
+    <table class="mind-tc__table">
+      <!-- ===================== CABEÇALHO FIXO ===================== -->
+      <thead>
+        <tr>
+          <th class="mtc-corner">
+            <span class="mtc-corner__title">Comparar ingressos</span>
+            <span class="mtc-corner__hint">Mind Summit</span>
+          </th>
+
+          <!-- PRIME (roxo) -->
+          <th class="mtc-head mtc-prime">
+            <span class="mtc-head__name">Prime</span>
+            <span class="mtc-head__installment">12x R$ 619</span>
+            <span class="mtc-head__cash">R$ 6.197 à vista</span>
+            <a class="mtc-buy" href="#" data-checkout="prime">Comprar Prime</a>
+          </th>
+
+          <!-- VIP (laranja/coral) -->
+          <th class="mtc-head mtc-vip">
+            <span class="mtc-head__name">VIP</span>
+            <span class="mtc-head__installment">12x R$ 219</span>
+            <span class="mtc-head__cash">R$ 2.197 à vista</span>
+            <a class="mtc-buy" href="#" data-checkout="vip">Comprar VIP</a>
+          </th>
+
+          <!-- BUSINESS (cinza escuro) -->
+          <th class="mtc-head mtc-business">
+            <span class="mtc-head__name">Business</span>
+            <span class="mtc-head__installment">12x R$ 195</span>
+            <span class="mtc-head__cash">R$ 1.947 à vista</span>
+            <a class="mtc-buy" href="#" data-checkout="business">Comprar Business</a>
+          </th>
+
+          <!-- MIND (verde) -->
+          <th class="mtc-head mtc-mind">
+            <span class="mtc-head__name">Mind</span>
+            <span class="mtc-head__installment">12x R$ 119</span>
+            <span class="mtc-head__cash">R$ 1.197 à vista</span>
+            <a class="mtc-buy" href="#" data-checkout="mind">Comprar Mind</a>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- ===================== ACESSO E CHEGADA ===================== -->
+        <tr class="mtc-cat open" data-group="g1">
+          <th class="mtc-cat__label"><span class="mtc-chevron"></span>Acesso e chegada</th>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+        </tr>
+
+        <tr data-belong="g1">
+          <th class="mtc-feat">Credenciamento antecipado</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+        <tr data-belong="g1">
+          <th class="mtc-feat">Check-in exclusivo</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+
+        <!-- ===================== PALCO PRINCIPAL ===================== -->
+        <tr class="mtc-cat open" data-group="g2">
+          <th class="mtc-cat__label"><span class="mtc-chevron"></span>Palco Principal</th>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+        </tr>
+
+        <tr data-belong="g2">
+          <th class="mtc-feat">Assento Prime, visão frontal</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g2">
+          <th class="mtc-feat">Assento VIP, visão privilegiada</th>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g2">
+          <th class="mtc-feat">Assento Mind, visão ampla</th>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+
+        <!-- ===================== APROFUNDAMENTO ===================== -->
+        <tr class="mtc-cat open" data-group="g3">
+          <th class="mtc-cat__label"><span class="mtc-chevron"></span>Aprofundamento</th>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+        </tr>
+
+        <tr data-belong="g3">
+          <th class="mtc-feat">Masterclasses Legends Internacionais</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g3">
+          <th class="mtc-feat">Workshops Nacionais VIP</th>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g3">
+          <th class="mtc-feat">Oficinas Práticas</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+        <tr data-belong="g3">
+          <th class="mtc-feat">Palcos Paralelos e Arena Mind</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+
+        <!-- ===================== PROXIMIDADE ===================== -->
+        <tr class="mtc-cat open" data-group="g4">
+          <th class="mtc-cat__label"><span class="mtc-chevron"></span>Proximidade</th>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+        </tr>
+
+        <tr data-belong="g4">
+          <th class="mtc-feat">Prime Lounge, cocktail, finger foods</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g4">
+          <th class="mtc-feat">Autógrafos Legends Internacionais</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g4">
+          <th class="mtc-feat">Autógrafos Autores Nacionais</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+
+        <!-- ===================== BENEFÍCIOS ===================== -->
+        <tr class="mtc-cat open" data-group="g5">
+          <th class="mtc-cat__label"><span class="mtc-chevron"></span>Benefícios</th>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+          <td class="mtc-cat__fill"></td>
+        </tr>
+
+        <tr data-belong="g5">
+          <th class="mtc-feat">Gravações Palco Principal por 90 dias</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g5">
+          <th class="mtc-feat">Gravações Masterclass Legends</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g5">
+          <th class="mtc-feat">Certificado Executivo (Legends)</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g5">
+          <th class="mtc-feat">Certificado Workshops Nacionais</th>
+          <td class="mtc-c"><i class="no"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c"><i class="no"></i></td>
+        </tr>
+        <tr data-belong="g5">
+          <th class="mtc-feat">Certificado de Participação</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+        <tr data-belong="g5">
+          <th class="mtc-feat">Sacola de Brindes</th>
+          <td class="mtc-c mtc-prime"><i class="yes"></i></td>
+          <td class="mtc-c mtc-vip"><i class="yes"></i></td>
+          <td class="mtc-c mtc-business"><i class="yes"></i></td>
+          <td class="mtc-c mtc-mind"><i class="yes"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+/* ====== RESET / ESCOPO (tudo prefixado em .mind-tc) ====== */
+.mind-tc *{box-sizing:border-box;margin:0;padding:0}
+.mind-tc{
+  /* ---- TOKENS DE COR (Figma — identidade Mind) ---- */
+  --prime:#9843FF;       /* Color/Primary/Roxo     — Prime    */
+  --vip:#FF7057;         /* Color/Primary/Laranja  — VIP      */
+  --business:#2C2D3D;    /* Color/Secondary/Cinza  — Business */
+  --mind:#68EE95;        /* Color/Primary/Verde    — Mind     */
+  --ink:#13131A;         /* Color/Neutral/Dark — texto/preto  */
+  --line:#ECEDF1;
+  --muted:#9a9aa6;
+  --soft:#f5f5f8;
+  --radius:18px;
+
+  /* Satoshi = fonte da marca; fallback Inter/sistema */
+  font-family:'Satoshi','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  max-width:1040px;
+  margin:0 auto;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ====== CONTÊINER COM SCROLL (vertical + horizontal) ====== */
+.mind-tc__scroll{
+  position:relative;
+  overflow:auto;
+  max-height:78vh;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 18px 50px -24px rgba(19,19,26,.35);
+  -webkit-overflow-scrolling:touch;
+}
+.mind-tc__scroll::-webkit-scrollbar{height:10px;width:10px}
+.mind-tc__scroll::-webkit-scrollbar-thumb{background:#d7d7df;border-radius:20px;border:2px solid #fff}
+
+.mind-tc__table{
+  border-collapse:separate;
+  border-spacing:0;
+  width:100%;
+  min-width:780px;          /* força scroll lateral no mobile */
+  background:#fff;
+}
+
+/* ====== CÉLULA CANTO (fixa nas duas direções) ====== */
+.mtc-corner{
+  position:sticky; top:0; left:0; z-index:6;
+  background:#fff;
+  text-align:left;
+  padding:18px 20px;
+  min-width:240px; width:240px;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  border-top-left-radius:var(--radius);
+  vertical-align:bottom;
+}
+.mtc-corner__title{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em}
+.mtc-corner__hint{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:2px}
+
+/* ====== CABEÇALHO DOS INGRESSOS (fixo no topo) ====== */
+.mtc-head{
+  position:sticky; top:0; z-index:4;
+  min-width:172px;
+  padding:16px 14px 14px;
+  text-align:center;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.18);
+  vertical-align:top;
+}
+.mtc-head__name{display:block;font-size:19px;font-weight:800;letter-spacing:-.01em}
+.mtc-head__installment{display:block;font-size:15px;font-weight:800;margin-top:8px}
+.mtc-head__cash{display:block;font-size:11.5px;font-weight:600;opacity:.85;margin-top:1px}
+
+.mtc-buy{
+  display:inline-block;
+  margin-top:12px;
+  padding:9px 16px;
+  background:#fff;
+  color:var(--ink);
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+  border-radius:999px;
+  white-space:nowrap;
+  box-shadow:0 6px 14px -8px rgba(0,0,0,.5);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.mtc-buy:hover{transform:translateY(-1px);box-shadow:0 10px 20px -10px rgba(0,0,0,.6)}
+
+/* cores por ingresso (fundo do header) */
+.mtc-head.mtc-prime{background:var(--prime)}
+.mtc-head.mtc-vip{background:var(--vip)}
+.mtc-head.mtc-business{background:var(--business)}
+.mtc-head.mtc-mind{background:var(--mind);color:var(--ink)}
+.mtc-head.mtc-mind .mtc-head__cash{opacity:.7}
+/* texto do botão na cor do ingresso */
+.mtc-head.mtc-prime    .mtc-buy{color:var(--prime)}
+.mtc-head.mtc-vip      .mtc-buy{color:var(--vip)}
+.mtc-head.mtc-business .mtc-buy{color:var(--business)}
+.mtc-head.mtc-mind     .mtc-buy{background:var(--ink);color:var(--mind)}
+/* canto arredondado do último header */
+.mtc-head.mtc-mind{border-top-right-radius:var(--radius)}
+
+/* ====== LINHAS DE CATEGORIA (acordeões) ====== */
+.mtc-cat{cursor:pointer}
+.mtc-cat__label{
+  position:sticky; left:0; z-index:3;
+  background:var(--soft);
+  text-align:left;
+  font-size:13.5px; font-weight:800; letter-spacing:.01em;
+  text-transform:uppercase;
+  color:#3a3a47;
+  padding:13px 20px;
+  min-width:240px; width:240px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  white-space:nowrap;
+}
+.mtc-cat__fill{
+  background:var(--soft);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.mtc-cat:hover .mtc-cat__label,
+.mtc-cat:hover .mtc-cat__fill{background:#ededf3}
+
+.mtc-chevron{
+  display:inline-block;
+  width:9px;height:9px;
+  margin-right:10px;
+  border-right:2.4px solid #6a6a78;
+  border-bottom:2.4px solid #6a6a78;
+  transform:rotate(45deg);
+  transition:transform .18s ease;
+  vertical-align:middle;
+  position:relative; top:-2px;
+}
+.mtc-cat.open .mtc-chevron{transform:rotate(-135deg);top:1px}
+
+/* ====== LINHAS DE FEATURE ====== */
+.mtc-feat{
+  position:sticky; left:0; z-index:2;
+  background:#fff;
+  text-align:left;
+  font-size:14px; font-weight:600; color:#26262f;
+  padding:13px 20px;
+  min-width:240px; width:240px;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  line-height:1.3;
+}
+.mtc-c{
+  text-align:center;
+  padding:13px 14px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+tbody tr:hover .mtc-feat,
+tbody tr:hover .mtc-c{background:#fcfcfe}
+
+/* ====== ÍCONES ✓ / – ====== */
+.mtc-c i{display:inline-block;width:24px;height:24px;border-radius:50%;position:relative;vertical-align:middle}
+.mtc-c i.yes::after{
+  content:"";
+  position:absolute; left:50%; top:47%;
+  width:6px; height:11px;
+  border:solid #fff; border-width:0 2.4px 2.4px 0;
+  transform:translate(-50%,-55%) rotate(45deg);
+}
+.mtc-c.mtc-prime    i.yes{background:var(--prime)}
+.mtc-c.mtc-vip      i.yes{background:var(--vip)}
+.mtc-c.mtc-business i.yes{background:var(--business)}
+.mtc-c.mtc-mind     i.yes{background:var(--mind)}
+/* check escuro no verde claro (contraste) */
+.mtc-c.mtc-mind i.yes::after{border-color:var(--ink)}
+.mtc-c i.no{width:auto;height:auto;border-radius:0}
+.mtc-c i.no::after{content:"–";color:#cfcfd8;font-weight:700;font-size:18px;line-height:1}
+
+/* canto inferior esquerdo arredondado */
+tbody tr:last-child .mtc-feat{border-bottom-left-radius:var(--radius)}
+
+/* ====== MOBILE ====== */
+@media (max-width:640px){
+  .mind-tc__table{min-width:700px}
+  .mtc-corner,.mtc-cat__label,.mtc-feat{min-width:168px;width:168px;padding-left:14px;padding-right:14px}
+  .mtc-corner{padding:14px}
+  .mtc-corner__title{font-size:14px}
+  .mtc-head{min-width:140px;padding:14px 10px}
+  .mtc-head__name{font-size:17px}
+  .mtc-feat{font-size:13px}
+  .mtc-buy{padding:8px 12px;font-size:12px}
+  .mind-tc__scroll{max-height:74vh}
+}
+</style>
+
+<script>
+(function(){
+  document.querySelectorAll('.mind-tc').forEach(function(tc){
+    tc.querySelectorAll('tr.mtc-cat').forEach(function(cat){
+      cat.addEventListener('click', function(){
+        var group = cat.getAttribute('data-group');
+        var open = cat.classList.toggle('open');
+        tc.querySelectorAll('tr[data-belong="'+group+'"]').forEach(function(row){
+          row.style.display = open ? '' : 'none';
+        });
+      });
+    });
+  });
+})();
+</script>
