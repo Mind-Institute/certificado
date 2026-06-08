@@ -321,7 +321,7 @@
 
 /* ====== CÉLULA CANTO (fixa nas duas direções) ====== */
 .mtc-corner{
-  position:sticky; top:0; left:0; z-index:6;
+  position:sticky; top:0; left:0; z-index:7;
   background:#fff;
   text-align:left;
   padding:18px 20px;
@@ -330,13 +330,15 @@
   border-right:1px solid var(--line);
   border-top-left-radius:var(--radius);
   vertical-align:bottom;
+  /* faixa opaca + sombra: cobre conteúdo que passa por baixo na emenda */
+  box-shadow:5px 0 0 0 #fff, 9px 0 10px -6px rgba(19,19,26,.12);
 }
 .mtc-corner__title{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em}
 .mtc-corner__hint{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:2px}
 
 /* ====== CABEÇALHO DOS INGRESSOS (fixo no topo) ====== */
 .mtc-head{
-  position:sticky; top:0; z-index:4;
+  position:sticky; top:0; z-index:6;
   min-width:172px;
   padding:16px 14px 14px;
   text-align:center;
@@ -381,7 +383,7 @@
 /* ====== LINHAS DE CATEGORIA (acordeões — CSS puro) ====== */
 .mtc-acc{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .mtc-cat__label{
-  position:sticky; left:0; z-index:3;
+  position:sticky; left:0; z-index:5;
   background:var(--soft);
   padding:0;
   min-width:240px; width:240px;
@@ -389,6 +391,7 @@
   border-bottom:1px solid var(--line);
   border-right:1px solid var(--line);
   white-space:nowrap;
+  box-shadow:5px 0 0 0 var(--soft), 9px 0 10px -6px rgba(19,19,26,.12);
 }
 .mtc-cat__btn{
   display:flex; align-items:center;
@@ -400,7 +403,7 @@
   -webkit-user-select:none; user-select:none;
 }
 .mtc-cat__fill{
-  position:relative;
+  position:relative; z-index:1;
   background:var(--soft);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
@@ -435,7 +438,7 @@
 
 /* ====== LINHAS DE FEATURE ====== */
 .mtc-feat{
-  position:sticky; left:0; z-index:2;
+  position:sticky; left:0; z-index:5;
   background:#fff;
   text-align:left;
   font-size:14px; font-weight:600; color:#26262f;
@@ -444,8 +447,10 @@
   border-bottom:1px solid var(--line);
   border-right:1px solid var(--line);
   line-height:1.3;
+  box-shadow:5px 0 0 0 #fff, 9px 0 10px -6px rgba(19,19,26,.12);
 }
 .mtc-c{
+  position:relative; z-index:1;
   text-align:center;
   padding:13px 14px;
   border-bottom:1px solid var(--line);
