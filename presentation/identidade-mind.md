@@ -1,75 +1,70 @@
 # Identidade Visual — Mind
 
-Guia de marca extraído do deck original (Figma → export PDF) e conferido pixel a pixel.
-Use este documento como fonte única para qualquer nova apresentação ou material Mind.
+Guia de marca para apresentações e materiais Mind. Tema **light** (fundo branco),
+conforme tokens oficiais.
 
 ---
 
 ## Cores
 
-| Papel | Nome | HEX | Uso |
-|---|---|---|---|
-| Fundo | Preto | `#000000` | fundo de todos os slides |
-| Painel | Preto suave | `#0A0A0A` | painel interno (moldura) |
-| Card | Cinza-grafite | `#141414` | cartões e blocos |
-| Borda | Branco 9% | `rgba(255,255,255,0.09)` | bordas sutis |
-| Texto | Branco | `#FFFFFF` | texto principal |
-| Secundário | Cinza | `#9A9A9A` | subtítulos, corpo |
-| Legenda | Cinza escuro | `#6B6B6B` | fontes, rótulos pequenos |
-| **Destaque +** | **Verde Mind** | **`#68EE95`** | positivo, ênfase, marca |
-| **Destaque −** | **Coral** | **`#FF7057`** | risco, alerta, contraste |
-| Estrutura | Roxo | `#9843FF` | drivers / fatores estruturais |
-| Institucional | Azul | `#4A7EBB` | instituições / parceiros |
+| Papel | Nome | HEX |
+|---|---|---|
+| Fundo | Branco | `#FFFFFF` |
+| Texto | Tinta | `#13131A` |
+| Texto secundário | — | `#5C5C68` |
+| Card / fill claro | — | `#F6F6F8` |
+| Borda | Tinta 10% | `rgba(19,19,26,0.10)` |
+| **Mind** | Verde | **`#68EE95`** |
+| **Prime** | Roxo | **`#9843FF`** |
+| **VIP** | Coral | **`#FF7057`** |
+| **Business** | Cinza | **`#2C2D3D`** |
 
-**Regra de ouro:** fundo preto, texto branco, **um** termo destacado em verde (positivo) ou coral (risco) por headline. Nunca colorir a frase inteira.
+> O verde Mind `#68EE95` é claro demais para texto pequeno sobre branco. Usamos
+> ele em **preenchimentos, bordas, pontos e realces**, e uma versão legível
+> `#0E9E51` (mesma família) para **texto** de ênfase. Logo/sparkle usam o `#68EE95` puro.
+
+**Regra:** fundo branco, texto tinta, **um** termo destacado por headline (verde legível, ou realce verde).
 
 ---
 
 ## Tipografia
 
-- **Família:** Satoshi (Fontshare — gratuita)
-  `https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap`
-- **Headlines:** Satoshi **900** (Black), tamanho grande, `letter-spacing: -0.03em`
-- **Corpo / subtítulo:** Satoshi 500
-- **Kickers (rótulos de seção):** Satoshi 700, MAIÚSCULAS, `letter-spacing: 0.26em`, coloridos
+- **Satoshi** (Fontshare) com fallback de sistema.
+  - Headlines: Satoshi **900**, `letter-spacing: -0.035em`
+  - Corpo: Satoshi 500 · Kickers: 700 maiúsculas, `letter-spacing: 0.22em`
+- Coloque os arquivos em `presentation/fonts/` (ver `css/fonts.css`) para Satoshi
+  real em preview/PDF sem depender de CDN.
 
 ---
 
 ## Logo
 
-Wordmark **"Mind"** em Satoshi Black branco, seguido de um **sparkle** (estrela de 4 pontas) em verde `#68EE95`.
-Posição padrão: canto inferior direito do slide. No deck de keynote aparece como `MindDash`; em propostas institucionais usa-se `Mind`.
-
-> ⚠️ Recriado em SVG/CSS a partir do Figma. Quando você exportar o logo oficial (SVG), é só substituir — o componente `.logo` no `css/minddash.css` aceita troca direta.
-
----
-
-## Componentes do deck (classes CSS em `css/minddash.css`)
-
-| Componente | Classe | Para que serve |
-|---|---|---|
-| Rótulo de seção | `.kicker` (`.c` coral, `.p` roxo) | topo de cada slide |
-| Headline | `.headline` + spans `.g`/`.c`/`.p` | título grande com palavra destacada |
-| Subtítulo | `.subhead` | linha de apoio |
-| Big stat | `.stat` / `.stat.huge` + `.vs` | números grandes, comparação "vs" |
-| Cards | `.cards` > `.card` + `.pill` | 3 blocos com selo colorido |
-| Fluxo vertical | `.flow` > `.step` | passo-a-passo (abordagem) |
-| Cards numerados | `.steps-grid` > `.step-card` | metodologia / oportunidade |
-| Checklist | `.checklist` (`.two` 2 colunas) | entregáveis, itens inclusos |
-| Entregáveis | `.deliverables` > `.dv` | lista com regras |
-| Fase | `.phase` > `.ph-tag` | selo "Fase 1..4" |
-| Objetivo | `.objective` | rodapé de slide de escopo |
-| Timeline | `.timeline` > `.tl-item` | cronograma horizontal |
-| Bio | `.bio` | parágrafos sobre pessoa |
-| Preço | `.price` + `.validity` | investimento |
-| Quote | `.quote` + `.quote-mark` | slides de transição/citação |
-| Cadeia | `.chain` | Driver → Experiência → Consequência |
-| Comparação | `.compare` (`.x` / `.v`) | "não é / é" |
+Wordmark **"Mind"** em Satoshi Black `#13131A` + **sparkle** (estrela 4 pontas) verde `#68EE95`.
+Canto inferior direito. Recriado em SVG/CSS — substituível pelo SVG oficial.
 
 ---
 
 ## Layout
 
-- Proporção **16:9** (1280×720 base).
-- Cada slide é um **painel preto arredondado** (raio 22px) com borda branca 9%, recriando a moldura do Figma.
-- Margens generosas (~5%). Kicker no topo, logo no rodapé direito, fonte/legenda no rodapé esquerdo.
+- **16:9**, fundo branco, **cantos arredondados** (raio 20px) com borda sutil.
+- Cruzes discretas (`+`) nos 4 cantos — detalhe de marca.
+- Kicker (com ponto colorido) no topo · headline · conteúdo que **preenche o quadro** · logo no rodapé direito.
+
+## Componentes (`css/minddash.css`)
+
+| Componente | Classe |
+|---|---|
+| Kicker | `.kicker` (`.c` coral, `.p` roxo, `.gray`) |
+| Headline + ênfase | `.headline` + `.g` (verde) / `.hl` (realce) / `.c` / `.p` |
+| Linhas numeradas | `.rows` > `.numrow` (`.coral`, `.purple`) |
+| Cards | `.cards` > `.card` |
+| Fluxo pílula | `.flow` > `.node` (`.last` = verde) |
+| Checklist | `.checklist` (`.two`) |
+| Timeline (cards) | `.timeline` > `.tl` (`.last` = coral) |
+| Objetivo | `.objective` |
+| Preço | `.pricebox` / `.price` |
+| Pílula/selo | `.pill` (`.g`/`.c`/`.p`) |
+| Quote | `.quote` / `.quote-mark` |
+
+> Nota técnica: o reveal força `display:block` nos slides — por isso o tema usa
+> `display:flex !important` na section para o conteúdo preencher a altura.

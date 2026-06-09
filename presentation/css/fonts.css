@@ -1,0 +1,21 @@
+/* Satoshi — coloque os arquivos da fonte em presentation/fonts/ e
+   o deck usa a Satoshi real (preview, PDF e online), sem depender de CDN.
+   Arquivos esperados (export padrão da Fontshare):
+     fonts/Satoshi-Variable.woff2  (variável 300–900)  — preferido
+   ou os estáticos:
+     fonts/Satoshi-Regular.woff2 / -Medium / -Bold / -Black
+   Enquanto não houver os arquivos, cai no fallback do sistema. */
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Variable.woff2") format("woff2-variations");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* fallbacks estáticos (carregam se o variável não existir) */
+@font-face { font-family:"Satoshi"; src:url("../fonts/Satoshi-Regular.woff2") format("woff2"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Satoshi"; src:url("../fonts/Satoshi-Medium.woff2")  format("woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Satoshi"; src:url("../fonts/Satoshi-Bold.woff2")    format("woff2"); font-weight:700; font-display:swap; }
+@font-face { font-family:"Satoshi"; src:url("../fonts/Satoshi-Black.woff2")   format("woff2"); font-weight:900; font-display:swap; }
