@@ -5,6 +5,9 @@ const EXEC = '/tmp/chrome-headless-shell-linux64/chrome-headless-shell';
 const file = '/home/user/certificado/Mind_Dash_Proposta_Disney_v3.html';
 let html = readFileSync(file, 'utf8');
 
+// logo do Mind embutido (base64) para aparecer no rodape de cada pagina
+const logoB64 = readFileSync('/home/user/certificado/logo.png').toString('base64');
+
 const PAD = 44;            // padding interno de cada página (px)
 const PAGE_W = 1123, PAGE_H = 794;   // A4 landscape em px @96dpi
 
@@ -31,8 +34,16 @@ const printCss = `
   .card,.box,.week,.step,.phase,.inv,.how,.chip,.row,.three .box,
   .mlists .box,.ptab .r,.feat div,.incl div{ break-inside: avoid; }
   h2,.eyebrow{ break-after: avoid; }
+
+  /* logo do Mind no canto inferior esquerdo de toda pagina */
+  .page-logo{
+    position: fixed; left: 30px; bottom: 22px;
+    height: 20px; width: auto; opacity: 0.9; z-index: 9999;
+  }
 </style>`;
 html = html.replace('</head>', printCss + '</head>');
+// insere o logo fixo (repetido em cada pagina na impressao)
+html = html.replace('</body>', `<img class="page-logo" src="data:image/png;base64,${logoB64}" alt="Mind"></body>`);
 
 const browser = await chromium.launch({ executablePath: EXEC, args: ['--no-sandbox','--disable-gpu'] });
 const page = await browser.newPage({ viewport: { width: PAGE_W, height: PAGE_H }, deviceScaleFactor: 2 });
