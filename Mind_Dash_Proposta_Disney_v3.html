@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta · Disney · Mind Dash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --surface:#0d0d0f;
+    --surface-2:#121215;
+    --line:rgba(255,255,255,0.09);
+    --line-soft:rgba(255,255,255,0.055);
+    --text:#f6f6f7;
+    --muted:#8b8b92;
+    --muted-2:#5f5f66;
+    --green:#35d9a0;
+    --purple:#9985f5;
+    --coral:#ff6a5a;
+    --maxw:1080px;
+    --pad:clamp(22px,5vw,80px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-0.01em;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  section{padding:clamp(64px,11vh,130px) 0;border-bottom:1px solid var(--line-soft);position:relative}
+  .eyebrow{
+    font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--green);margin-bottom:26px;display:block;
+  }
+  h1{font-weight:700;letter-spacing:-0.035em;line-height:1.02;font-size:clamp(40px,7vw,82px)}
+  h2{font-weight:700;letter-spacing:-0.03em;line-height:1.06;font-size:clamp(30px,4.8vw,54px)}
+  h3{font-weight:600;letter-spacing:-0.02em;font-size:clamp(20px,2.4vw,26px)}
+  .lead{color:var(--muted);font-size:clamp(16px,1.9vw,21px);font-weight:400;max-width:46ch;margin-top:24px;line-height:1.45}
+  .p{color:var(--muted);font-size:clamp(15px,1.7vw,18px);max-width:60ch}
+  .pur{color:var(--purple)}
+  .cor{color:var(--coral)}
+  .grn{color:var(--green)}
+  .plus{position:absolute;color:rgba(255,255,255,0.12);font-weight:300;font-size:22px;user-select:none}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* COVER */
+  .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--line-soft);position:relative;overflow:hidden}
+  .cover::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(60% 50% at 78% 18%, rgba(153,133,245,0.14), transparent 70%),
+    radial-gradient(50% 45% at 12% 88%, rgba(255,106,90,0.10), transparent 72%);
+    pointer-events:none}
+  .cover .tag{font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:34px}
+  .cover h1{max-width:14ch}
+  .cover .sub{color:var(--muted);font-size:clamp(16px,2vw,21px);max-width:42ch;margin-top:30px;line-height:1.45}
+  .cover .meta{margin-top:60px;display:flex;gap:60px;flex-wrap:wrap}
+  .cover .meta div span{display:block;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px}
+  .cover .meta div b{font-weight:600;font-size:15px;letter-spacing:0.04em}
+  .cover .rule{height:1px;background:var(--line);margin:46px 0 0;max-width:520px}
+  .cover .date{margin-top:46px;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted-2)}
+
+  /* cards grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+  @media(max-width:760px){.grid3,.grid2{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px 28px}
+  .card .num{font-size:11px;letter-spacing:0.18em;color:var(--coral);font-weight:600;margin-bottom:16px;display:block}
+  .card h4{font-weight:600;font-size:17px;letter-spacing:-0.01em;line-height:1.3}
+  .card p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.45}
+
+  /* two-col compare boxes */
+  .box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px 28px}
+  .box .label{display:inline-block;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid;margin-bottom:22px}
+  .box.cor .label{color:var(--coral);border-color:rgba(255,106,90,0.4)}
+  .box.pur .label{color:var(--purple);border-color:rgba(153,133,245,0.4)}
+  .box ul{list-style:none}
+  .box li{display:flex;gap:12px;padding:9px 0;font-size:15.5px;color:#d7d7db;align-items:baseline}
+  .box li::before{content:"—";color:var(--muted-2);flex-shrink:0}
+  .closing{margin-top:40px;font-weight:600;font-size:clamp(18px,2.4vw,26px);letter-spacing:-0.02em;line-height:1.25;max-width:30ch}
+
+  /* compare rows */
+  .rows{margin-top:46px;border-top:1px solid var(--line)}
+  .rows .head{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:16px 6px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600}
+  .rows .head .a{color:var(--coral)}.rows .head .b{color:var(--green)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:17px 6px;border-top:1px solid var(--line-soft);font-size:15.5px;align-items:center}
+  .row .a{color:var(--muted)}.row .b{color:var(--text);font-weight:500}
+  @media(max-width:620px){.rows .head,.row{grid-template-columns:1fr 1fr;gap:14px;font-size:13.5px}}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:42px}
+  .chip{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 18px;font-size:14.5px;font-weight:500;border-left:2px solid var(--green)}
+  .chip:nth-child(2n){border-left-color:var(--purple)}
+  .chip:nth-child(3n){border-left-color:var(--coral)}
+
+  /* arrow feature list */
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-top:46px}
+  @media(max-width:620px){.feat{grid-template-columns:1fr}}
+  .feat div{display:flex;gap:14px;font-size:16px;align-items:baseline;padding:6px 0}
+  .feat div::before{content:"→";color:var(--purple);font-weight:600;flex-shrink:0}
+
+  /* journey timeline */
+  .tl{margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:820px){.tl{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.tl{grid-template-columns:1fr}}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 22px;position:relative}
+  .step .ph{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);font-weight:600}
+  .step h4{margin-top:12px;font-size:16px;font-weight:600}
+  .step p{margin-top:8px;color:var(--muted);font-size:13.5px;line-height:1.4}
+
+  /* week-by-week */
+  .howrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:44px 0 8px}
+  @media(max-width:620px){.howrow{grid-template-columns:1fr}}
+  .how{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;border-top:2px solid var(--green)}
+  .how:nth-child(2){border-top-color:var(--purple)}
+  .how .k{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--green);margin-bottom:12px}
+  .how:nth-child(2) .k{color:var(--purple)}
+  .how p{color:var(--muted);font-size:15px;line-height:1.5}
+  .howfecho{margin-top:26px;font-weight:600;font-size:clamp(17px,2.2vw,23px);letter-spacing:-0.02em;color:var(--text);max-width:34ch}
+  .weeks{margin-top:42px;display:flex;flex-direction:column;gap:16px}
+  .week{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,3vw,32px);position:relative}
+  .week .wk{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--coral);display:block;margin-bottom:9px}
+  .week h3{font-size:clamp(19px,2.3vw,24px)}
+  .week .pilar{display:inline-block;font-size:11px;letter-spacing:0.04em;font-weight:500;color:var(--purple);border:1px solid rgba(153,133,245,0.35);border-radius:999px;padding:5px 12px;margin:16px 8px 0 0}
+  .week .obj{color:#d7d7db;font-size:16px;margin-top:18px;line-height:1.45}
+  .week .ao{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+  @media(max-width:620px){.week .ao{grid-template-columns:1fr}}
+  .week .ao div span{display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .week .ao div span.g{color:var(--green)}
+  .week .ao div span.p{color:var(--purple)}
+  .week .ao div p{color:var(--muted);font-size:14px;line-height:1.45}
+  .week .move{margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft);font-size:14px;color:#cfcfd4}
+  .week .move b{color:var(--green);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-size:10.5px;margin-right:12px}
+
+  /* measurement */
+  .mlists{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:46px}
+  @media(max-width:760px){.mlists{grid-template-columns:1fr}}
+  .mlists .box .h{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--purple);margin-bottom:20px}
+  .mlists ul{list-style:none}
+  .mlists li{display:flex;gap:11px;padding:7px 0;font-size:14.5px;color:#d2d2d6}
+  .mlists li::before{content:"•";color:var(--green)}
+  .note{margin-top:30px;font-size:14px;color:var(--muted);font-style:italic;max-width:62ch;line-height:1.5;border-left:2px solid var(--line);padding-left:18px}
+
+  /* program table */
+  .ptab{margin-top:46px;border-top:1px solid var(--line)}
+  .ptab .r{display:grid;grid-template-columns:0.9fr 1.4fr;gap:30px;padding:18px 6px;border-bottom:1px solid var(--line-soft)}
+  .ptab .r .c1{color:var(--purple);font-weight:600;font-size:15.5px}
+  .ptab .r .c2{color:var(--muted);font-size:15px}
+  @media(max-width:620px){.ptab .r{grid-template-columns:1fr;gap:6px}}
+
+  /* phases */
+  .phases{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+  @media(max-width:700px){.phases{grid-template-columns:1fr}}
+  .phase{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px 28px}
+  .phase .tag{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+  .phase.one .tag{color:var(--green)}.phase.two .tag{color:var(--purple)}
+  .phase h3{font-size:22px}
+  .phase p{color:var(--muted);margin-top:12px;font-size:15px;line-height:1.5}
+
+  /* investment */
+  .inv{margin-top:48px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(28px,4vw,46px);position:relative;overflow:hidden}
+  .inv::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 88% 6%,rgba(255,106,90,0.12),transparent 70%);pointer-events:none}
+  .badge{display:inline-block;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--green);border:1px solid rgba(53,217,160,0.4);border-radius:999px;padding:6px 13px;margin-bottom:24px}
+  .inv .name{font-size:18px;font-weight:600;color:var(--muted)}
+  .price{font-size:clamp(46px,8vw,72px);font-weight:800;letter-spacing:-0.04em;color:var(--coral);margin:6px 0 4px;line-height:1}
+  .price small{font-size:18px;font-weight:500;color:var(--muted)}
+  .inv .desc{color:var(--muted);font-size:15px;margin-bottom:30px;max-width:48ch}
+  .incl{display:grid;grid-template-columns:1fr 1fr;gap:11px 30px}
+  @media(max-width:620px){.incl{grid-template-columns:1fr}}
+  .incl div{display:flex;gap:12px;font-size:15px;align-items:baseline;color:#dadade}
+  .incl div::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0}
+  .incl div.hi{color:#fff;font-weight:600}
+  .incl div.hi::before{color:var(--coral)}
+  .f2note{margin-top:30px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;max-width:60ch}
+  .f2note b{color:var(--purple);font-weight:600}
+
+  /* final */
+  .final h2{max-width:18ch}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  @media(max-width:760px){.three{grid-template-columns:1fr}}
+  .three .box .h{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
+  .three .box:nth-child(1) .h{color:var(--green)}
+  .three .box:nth-child(2) .h{color:var(--purple)}
+  .three .box:nth-child(3) .h{color:var(--coral)}
+  .three .box p{color:#cfcfd4;font-size:15px;line-height:1.6}
+
+  /* thanks */
+  .thanks{padding-bottom:clamp(80px,14vh,160px)}
+  .thanks h2{font-size:clamp(36px,6vw,68px)}
+  .sig{margin-top:44px;line-height:1.7}
+  .sig .n{font-weight:700;letter-spacing:0.02em;font-size:15px}
+  .sig .role{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .sig .c{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.8}
+  .sig .c a{color:var(--green);text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <span class="plus" style="top:6%;left:5%">+</span>
+  <span class="plus" style="bottom:10%;left:5%">+</span>
+  <div class="wrap">
+    <div class="tag">Proposta · Disney · Brasil</div>
+    <h1>Comunicação <span class="pur">Executiva</span> &amp; Confiança <span class="cor">sob Pressão</span>.</h1>
+    <p class="sub">Um programa prático para líderes apresentarem com clareza e presença diante do alto escalão — atuando na raiz: ansiedade, autocobrança e medo de avaliação. Não no idioma.</p>
+    <div class="rule"></div>
+    <div class="meta">
+      <div><span>Desenvolvido para</span><b>DISNEY · LICENSING</b></div>
+      <div><span>Desenvolvido por</span><b>MIND</b></div>
+      <div><span>Formato</span><b>PILOTO BRASIL · PT</b></div>
+    </div>
+    <div class="date">Junho · 2026</div>
+  </div>
+</header>
+
+<!-- RESUMO -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Resumo Executivo</span>
+    <h2 class="rv">Uma intervenção <span class="pur">prática</span> para destravar a comunicação sob pressão.</h2>
+    <p class="lead rv">Desenhada para ajudar os líderes da Disney a:</p>
+    <div class="grid3">
+      <div class="card rv"><span class="num">01</span><h4>Comunicar com clareza e presença diante de executivos seniores.</h4></div>
+      <div class="card rv"><span class="num">02</span><h4>Reduzir ansiedade, autocobrança e medo de avaliação na apresentação.</h4></div>
+      <div class="card rv"><span class="num">03</span><h4>Medir, de forma objetiva, o quanto a dificuldade deixou de ser paralisante.</h4></div>
+    </div>
+    <p class="p rv" style="margin-top:34px">O programa combina <span class="grn">regulação emocional</span>, <span class="grn">mudança comportamental</span> e <span class="grn">prática com exposição</span> para transformar a forma como esses líderes se apresentam — com resultado mensurado antes e depois.</p>
+  </div>
+</section>
+
+<!-- DESAFIO -->
+<section>
+  <span class="plus" style="top:8%;right:5%">+</span>
+  <div class="wrap">
+    <span class="eyebrow rv">O Desafio</span>
+    <h2 class="rv">A trava <span class="cor">não é o idioma</span>. É o que acontece <span class="pur">sob pressão</span>.</h2>
+    <p class="lead rv">A camada de gerência precisa apresentar a vendedores globais e executivos de alto escalão (VP, SVP, EVP) — e, na hora, muitas vezes trava ou se sente intimidada.</p>
+    <div class="grid2">
+      <div class="box cor rv">
+        <span class="label">O que parece ser</span>
+        <ul>
+          <li>Domínio do idioma</li>
+          <li>Gramática e vocabulário</li>
+          <li>Falta de técnica de apresentação</li>
+        </ul>
+      </div>
+      <div class="box pur rv">
+        <span class="label">O que realmente trava</span>
+        <ul>
+          <li>Ansiedade e desconforto sob pressão</li>
+          <li>Medo de avaliação diante do alto escalão</li>
+          <li>Autocobrança e perfeccionismo</li>
+          <li>A intimidação de não soar "tão fluente quanto"</li>
+        </ul>
+      </div>
+    </div>
+    <p class="closing rv">São pessoas que se comunicam — mas <span class="cor">travam</span>. O trabalho é na raiz emocional, aplicado a esse desafio específico.</p>
+  </div>
+</section>
+
+<!-- POR QUE FALHAM -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Por que treinos tradicionais falham</span>
+    <h2 class="rv">Técnica de oratória <span class="cor">não muda</span> a relação com a pressão.</h2>
+    <div class="grid2">
+      <div class="box cor rv">
+        <span class="label">O que treinos de oratória fazem</span>
+        <ul>
+          <li>Técnicas e dicas de apresentação</li>
+          <li>Foco no slide e na estrutura</li>
+          <li>"Seja confiante" — conteúdo motivacional</li>
+          <li>Workshop pontual</li>
+          <li>Sem medição de resultado</li>
+        </ul>
+      </div>
+      <div class="box pur rv">
+        <span class="label">O que realmente muda o comportamento</span>
+        <ul>
+          <li>Trabalhar a raiz: ansiedade e autocrítica</li>
+          <li>Mudar a relação com o erro e a avaliação</li>
+          <li>Prática com exposição e reforço contínuo</li>
+          <li>Jornada com aplicação real</li>
+          <li>Mensuração antes e depois</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENTE -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Como esta intervenção é diferente</span>
+    <h2 class="rv">Treino de oratória <span class="cor">vs.</span> esta intervenção.</h2>
+    <div class="rows rv">
+      <div class="head"><div class="a">Treino de oratória</div><div class="b">Esta intervenção</div></div>
+      <div class="row"><div class="a">Técnicas e dicas</div><div class="b">Regulação emocional + comunicação</div></div>
+      <div class="row"><div class="a">Foco no slide</div><div class="b">Foco na pessoa sob pressão</div></div>
+      <div class="row"><div class="a">"Seja confiante"</div><div class="b">Confiança construída pela prática</div></div>
+      <div class="row"><div class="a">Workshop pontual</div><div class="b">Jornada com reforço</div></div>
+      <div class="row"><div class="a">Aprendizagem passiva</div><div class="b">Prática com exposição</div></div>
+      <div class="row"><div class="a">Sem medição</div><div class="b">Mensuração pré/pós com instrumento validado</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJETIVO -->
+<section>
+  <span class="plus" style="bottom:12%;right:6%">+</span>
+  <div class="wrap">
+    <span class="eyebrow rv">Objetivo do Programa</span>
+    <h2 class="rv">O objetivo não é eliminar o nervosismo. É torná-lo <span class="pur">administrável</span>, não <span class="cor">paralisante</span>.</h2>
+    <p class="lead rv">Ajudar os líderes a apresentar com clareza, presença e regulação diante do alto escalão — atuando na raiz emocional, não na superfície técnica.</p>
+    <div class="chips">
+      <div class="chip rv">Regulação sob pressão</div>
+      <div class="chip rv">Confiança na comunicação</div>
+      <div class="chip rv">Menos autocobrança</div>
+      <div class="chip rv">Presença executiva</div>
+      <div class="chip rv">Resultado mensurável</div>
+    </div>
+  </div>
+</section>
+
+<!-- MIND DASH -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Conheça o Mind Dash</span>
+    <h2 class="rv">Uma jornada de <span class="pur">6 semanas</span> entregue na plataforma Mind Dash.</h2>
+    <p class="lead rv">Os líderes não assistem a um curso de oratória — eles testam comportamentos, praticam sob exposição e reconstroem a relação com a pressão.</p>
+    <div class="tl">
+      <div class="step rv"><div class="ph">01</div><h4>Assessment</h4><p>Mapeamento inicial para entender o ponto de partida, diferenciar idioma, ansiedade, autoconfiança e comunicação sob pressão.</p></div>
+      <div class="step rv"><div class="ph">02</div><h4>Core Track</h4><p>Trilha estruturada de desenvolvimento da capacidade central. Neste caso: Comunicação Executiva sob Pressão.</p></div>
+      <div class="step rv"><div class="ph">03</div><h4>Companion de IA</h4><p>Reforço comportamental entre os encontros, com preparação, reflexão, prática e acompanhamento dos experimentos.</p></div>
+      <div class="step rv"><div class="ph">04</div><h4>Cohorts de Implementação</h4><p>Encontros ao vivo para aplicação, troca, prática com exposição e feedback.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA SEMANA A SEMANA -->
+<section>
+  <span class="plus" style="top:7%;right:5%">+</span>
+  <div class="wrap">
+    <span class="eyebrow rv">A Jornada</span>
+    <h2 class="rv">O que os líderes fazem, <span class="pur">semana a semana</span>.</h2>
+    <p class="lead rv">Seis semanas, ancoradas nos sete pilares do Mecanismo de Mudança MIND®, aplicadas a um único desafio: comunicar sob pressão. Cada semana combina conteúdo no seu ritmo e um encontro ao vivo focado em prática.</p>
+
+    <div class="howrow">
+      <div class="how rv">
+        <div class="k">Antes · no seu ritmo</div>
+        <p>Vídeo-conceito curto + exercício no workbook. Cerca de 20–30 min, quando quiser.</p>
+      </div>
+      <div class="how rv">
+        <div class="k">Ao vivo · 90 min</div>
+        <p>Conexão com o grupo, aprofundamento e, principalmente, prática com feedback.</p>
+      </div>
+    </div>
+    <p class="howfecho rv">Você não assiste a uma palestra. Chega ao vivo pronto pra praticar.</p>
+
+    <div class="weeks">
+      <div class="week rv">
+        <span class="wk">Semana 0 · Kick-off</span>
+        <h3>Triagem &amp; ponto de partida</h3>
+        <span class="pilar">Clareza de Objetivo &amp; Mensuração</span>
+        <p class="obj">Entender a real dificuldade de cada um e estabelecer a linha de base.</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Triagem (idioma × ansiedade) + assessment pré-programa.</p></div>
+          <div><span class="p">Ao vivo</span><p>Palestra de sensibilização — engajar, alinhar expectativas e abrir o grupo.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Linha de base de todos os construtos.</div>
+      </div>
+
+      <div class="week rv">
+        <span class="wk">Semana 1</span>
+        <h3>Entender a ansiedade de performance</h3>
+        <span class="pilar">Desidentificação &amp; Psicoeducação</span>
+        <p class="obj">Enxergar o próprio padrão e parar de se identificar com o nervosismo.</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Vídeo-conceito sobre o mecanismo da ansiedade de performance + registro das próprias situações de apresentação.</p></div>
+          <div><span class="p">Ao vivo</span><p>Mapear gatilhos e sintomas no grupo; ressignificar o nervosismo como energia, não inimigo.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Ansiedade ao falar em público — consciência inicial.</div>
+      </div>
+
+      <div class="week rv">
+        <span class="wk">Semana 2</span>
+        <h3>Regular sob pressão</h3>
+        <span class="pilar">Abordagem Integrada Mente-Corpo</span>
+        <p class="obj">Ter técnicas concretas para regular o corpo antes, durante e depois de apresentar.</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Vídeo-conceito de regulação fisiológica + prática guiada para repetir na semana.</p></div>
+          <div><span class="p">Ao vivo</span><p>Praticar as técnicas no grupo e aplicá-las a um momento real de fala.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Regulação / ansiedade no momento.</div>
+      </div>
+
+      <div class="week rv">
+        <span class="wk">Semana 3</span>
+        <h3>Diálogo interno e medo de avaliação</h3>
+        <span class="pilar">Diálogo Interno &amp; Relação com o Self</span>
+        <span class="pilar">Desidentificação</span>
+        <p class="obj">Reduzir a autocobrança e o medo do "que vão pensar".</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Vídeo-conceito autocrítica × autocompaixão + exercício de registro de pensamento.</p></div>
+          <div><span class="p">Ao vivo</span><p>Reestruturar uma previsão catastrófica real; autocompaixão em dupla; largar comportamentos de segurança.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Medo de avaliação negativa; autocrítica.</div>
+      </div>
+
+      <div class="week rv">
+        <span class="wk">Semana 4 · Prática em subgrupos ①</span>
+        <h3>Prática com exposição</h3>
+        <span class="pilar">Aplicação Prática &amp; Iteração</span>
+        <span class="pilar">Autoeficácia</span>
+        <p class="obj">Apresentar de verdade, em ambiente seguro, e construir confiança por pequenos passos.</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Preparar uma apresentação curta + vídeo sobre foco externo (atenção na mensagem, não em si mesmo).</p></div>
+          <div><span class="p">Ao vivo (~10)</span><p>Apresentação curta com feedback estruturado + video feedback.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Autoeficácia começa a subir.</div>
+      </div>
+
+      <div class="week rv">
+        <span class="wk">Semana 5 · Prática em subgrupos ②</span>
+        <h3>Comunicação executiva sob pressão</h3>
+        <span class="pilar">Aplicação Prática &amp; Iteração</span>
+        <span class="pilar">Vínculo &amp; Suporte</span>
+        <p class="obj">Desenvolver estrutura, síntese e clareza para comunicar ideias de forma mais executiva.</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Preparar uma apresentação no formato executivo + vídeo de estrutura de mensagem.</p></div>
+          <div><span class="p">Ao vivo (~10)</span><p>Apresentação desafiadora simulando o contexto real; refinar presença, voz e mensagem.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Autoeficácia; transferência para o trabalho.</div>
+      </div>
+
+      <div class="week rv">
+        <span class="wk">Semana 6</span>
+        <h3>Sustentar e transferir</h3>
+        <span class="pilar">Aplicação Prática &amp; Iteração</span>
+        <span class="pilar">Clareza &amp; Mensuração</span>
+        <p class="obj">Manter o ganho no dia a dia e provar o resultado.</p>
+        <div class="ao">
+          <div><span class="g">Antes</span><p>Assessment pós-programa + esboço do plano pessoal de sustentação.</p></div>
+          <div><span class="p">Ao vivo</span><p>Consolidar plano de manutenção e prevenção de recaída; celebrar os deltas do grupo.</p></div>
+        </div>
+        <div class="move"><b>Move</b>Pós-assessment completo → relatório de impacto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENSURAÇÃO -->
+<section>
+  <span class="plus" style="top:9%;left:6%">+</span>
+  <div class="wrap">
+    <span class="eyebrow rv">Mensuração &amp; Impacto</span>
+    <h2 class="rv">Mensuração <span class="pur">pré e pós</span> + <span class="grn">dashboard com resultados</span>.</h2>
+    <p class="lead rv">O coração do programa: medir, de forma científica, o quanto a dificuldade deixou de ser paralisante.</p>
+    <div class="mlists">
+      <div class="box rv">
+        <div class="h">O que medimos</div>
+        <ul>
+          <li>Ansiedade ao falar em público</li>
+          <li>Medo de avaliação negativa</li>
+          <li>Autocobrança e perfeccionismo</li>
+          <li>Autoeficácia e confiança na comunicação</li>
+          <li>Percepção de evolução (antes × depois)</li>
+        </ul>
+      </div>
+      <div class="box rv">
+        <div class="h">Dashboard inclui</div>
+        <ul>
+          <li>Scores pré e pós por dimensão</li>
+          <li>Evolução do grupo (agregada e anônima)</li>
+          <li>Dados de engajamento e conclusão</li>
+          <li>Temas qualitativos</li>
+          <li>Recomendações e próximos passos</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note rv">Não inventamos perguntas. Usamos instrumentos validados na literatura científica, compondo subescalas específicas para a realidade dos líderes da Disney. Dados individuais são confidenciais; o reporte à organização é sempre agregado.</p>
+  </div>
+</section>
+
+<!-- ESTRUTURA -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Estrutura do Programa</span>
+    <h2 class="rv">Uma <span class="pur">arquitetura integrada</span> de prática e mudança.</h2>
+    <div class="ptab rv">
+      <div class="r"><div class="c1">Triagem inicial</div><div class="c2">Diferenciar idioma, ansiedade e comunicação sob pressão</div></div>
+      <div class="r"><div class="c1">Assessment pré</div><div class="c2">Estabelecer linha de base</div></div>
+      <div class="r"><div class="c1">Kick-off</div><div class="c2">Engajar participantes e alinhar a jornada</div></div>
+      <div class="r"><div class="c1">Core Track de 6 semanas</div><div class="c2">Desenvolver Comunicação Executiva sob Pressão</div></div>
+      <div class="r"><div class="c1">Conteúdos assíncronos</div><div class="c2">Preparar os participantes para a prática</div></div>
+      <div class="r"><div class="c1">Companion de IA</div><div class="c2">Sustentar aplicação entre encontros</div></div>
+      <div class="r"><div class="c1">Cohorts ao vivo</div><div class="c2">Praticar, discutir e receber feedback</div></div>
+      <div class="r"><div class="c1">Experimentos comportamentais</div><div class="c2">Transferir aprendizagem para o trabalho real</div></div>
+      <div class="r"><div class="c1">Assessment pós</div><div class="c2">Medir evolução</div></div>
+      <div class="r"><div class="c1">Relatório executivo</div><div class="c2">Apresentar resultados agregados e próximos passos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FASES -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Estratégia de Implementação</span>
+    <h2 class="rv">Começar pelo <span class="grn">Brasil</span>. Expandir pela <span class="pur">região</span>.</h2>
+    <div class="phases">
+      <div class="phase one rv">
+        <div class="tag">Fase 1 · Piloto</div>
+        <h3>Brasil — Português</h3>
+        <p>~20 líderes, 6 semanas. Na língua-mãe, a profundidade e a abertura para falar de ansiedade e autocobrança são muito maiores. Medimos o resultado antes e depois.</p>
+      </div>
+      <div class="phase two rv">
+        <div class="tag">Fase 2 · Expansão</div>
+        <h3>Américas — Inglês</h3>
+        <p>Demais países da região, em inglês, dimensionada a partir dos resultados do piloto. O relatório de impacto do Brasil define o que se mantém, o que se ajusta e onde escalar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">Investimento</span>
+    <h2 class="rv"><span class="grn">Fase 1</span> · Piloto Brasil.</h2>
+    <div class="inv rv">
+      <span class="badge">Programa completo · ~20 líderes</span>
+      <div class="name">Comunicação Executiva sob Pressão</div>
+      <div class="price">R$ 89.000</div>
+      <p class="desc">Intervenção de 6 semanas, em português, com mensuração científica de impacto.</p>
+      <div class="incl">
+        <div>Triagem inicial</div>
+        <div>Assessment pré-programa</div>
+        <div>Kick-off ao vivo</div>
+        <div>Core Track de 6 semanas</div>
+        <div>Conteúdos assíncronos</div>
+        <div>Companion de IA</div>
+        <div>Cohorts de implementação</div>
+        <div>Práticas em subgrupos</div>
+        <div>Experimentos comportamentais semanais</div>
+        <div>Assessment pós-programa</div>
+        <div class="hi">Dashboard agregado</div>
+        <div class="hi">Relatório executivo de impacto</div>
+      </div>
+      <p class="f2note"><b>Fase 2 · Expansão regional</b><br>A ser dimensionada e orçada após a análise dos resultados do piloto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <span class="plus" style="top:8%;left:5%">+</span>
+  <div class="wrap">
+    <span class="eyebrow rv">Mensagem Final</span>
+    <h2 class="rv">Comunicar sob pressão não é talento. É uma <span class="pur">habilidade que se constrói</span>.</h2>
+    <p class="lead rv">E ela emerge da interação entre três dimensões — que esta intervenção trabalha ao mesmo tempo.</p>
+    <div class="three">
+      <div class="box rv"><div class="h">Indivíduo</div><p>Regulação emocional, autoconfiança e a relação com o erro e a avaliação.</p></div>
+      <div class="box rv"><div class="h">Habilidade</div><p>Presença, voz e comunicação assertiva, construídas por prática real com exposição.</p></div>
+      <div class="box rv"><div class="h">Evidência</div><p>Mensuração antes e depois, que transforma percepção em resultado demonstrável.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="thanks">
+  <span class="plus" style="top:8%;left:5%">+</span>
+  <span class="plus" style="bottom:16%;left:5%">+</span>
+  <div class="wrap">
+    <span class="eyebrow rv">Obrigada</span>
+    <h2 class="rv">Obrigada, <span class="cor">Disney</span>.</h2>
+    <p class="lead rv">Estamos prontos para construir, junto com vocês, uma intervenção que destrava a comunicação de verdade — e prova isso com dados.</p>
+    <div class="sig rv">
+      <div class="n">ADRIANA DRULLA</div>
+      <div class="role">CEO &amp; Founder · Mind</div>
+      <div class="c">
+        <a href="mailto:adriana@joinmind.com.br">adriana@joinmind.com.br</a> · +55 11 99793-7733<br>
+        R. Dr. Geraldo Campos Moreira, 240 · 14º andar — Brooklin<br>
+        São Paulo / SP · 04571-020<br>
+        Mind Summit 2026 — mindsummit.com.br
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach((el,i)=>{
+    const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));
+    el.style.transitionDelay=(sib.indexOf(el)%6)*70+'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
