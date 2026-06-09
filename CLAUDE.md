@@ -256,11 +256,14 @@ Existem **8 colunas LEGACY** (`linkedin_block_*`, `summit_block_*`) — mantidas
 ### Quando adicionar uma coluna nova
 Migration via `mcp__e5a91c63-...__apply_migration` (não via execute_sql).
 
-### Cores brand
-- `#000000` preto puro
-- `#FFFFFF` branco
-- `#68EE95` verde Mind
-- Tailwind: `brand-black`, `brand-green-mind`
+### Identidade visual
+**Fonte única:** ver `IDENTIDADE-VISUAL.md` na raiz (paleta completa + tipografia).
+
+Resumo:
+- `#68EE95` verde Mind (positivo/destaque) · `#FF7057` coral (risco/alerta) · `#9843FF` roxo (drivers/engajamento)
+- `#000000` preto (fundo) · `#FFFFFF` branco (texto)
+- Tipografia: **Satoshi** (toda a tipografia)
+- Tailwind: `brand-green-mind`, `brand-coral`, `brand-roxo`, `brand-black`, `brand-white`
 
 ---
 
