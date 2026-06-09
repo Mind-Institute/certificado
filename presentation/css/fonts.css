@@ -1,0 +1,12 @@
+/* Satoshi — fonte oficial da marca Mind (do Google Drive › Marca).
+   Variable font (peso 300–900) auto-hospedada: funciona em preview,
+   PDF e online, sem depender de CDN. */
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Variable.woff2") format("woff2-variations"),
+       url("../fonts/Satoshi-Variable.ttf")  format("truetype-variations");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
