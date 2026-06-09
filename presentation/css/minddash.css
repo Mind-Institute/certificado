@@ -213,5 +213,9 @@
 .logo .spark { width: 0.5em; height: 0.5em; margin-top: 0.02em; }
 .logo.lg { font-size: 1em; }
 
+/* logo oficial MindDash (SVG) */
+.logo-img { position: absolute; right: 60px; bottom: 30px; height: 22px; width: auto; z-index: 3; }
+.logo-img.lg { height: 38px; }
+
 .reveal .progress { color: var(--green); height: 3px; }
 .reveal .controls { color: var(--green-ink); }
