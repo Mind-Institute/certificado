@@ -13,6 +13,8 @@ const config: Config = {
           black: "#000000",
           white: "#ffffff",
           "green-mind": "#68EE95",
+          coral: "#FF7057",
+          roxo: "#9843FF",
         },
       },
       fontFamily: {
