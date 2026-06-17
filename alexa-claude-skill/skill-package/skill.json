@@ -1,0 +1,44 @@
+{
+  "manifest": {
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "locales": {
+        "pt-BR": {
+          "name": "Assistente Inteligente",
+          "summary": "Converse com o Claude por voz através da Alexa.",
+          "description": "Faça perguntas em linguagem natural e receba respostas geradas pelo Claude (IA da Anthropic). Diga 'Alexa, abrir assistente inteligente' e comece a perguntar.",
+          "examplePhrases": [
+            "Alexa, abrir assistente inteligente",
+            "Alexa, pergunte ao assistente inteligente o que é segurança psicológica",
+            "Alexa, peça ao assistente inteligente para explicar a teoria da relatividade"
+          ],
+          "keywords": ["assistente", "claude", "ia", "perguntas", "respostas"]
+        }
+      },
+      "isAvailableWorldwide": false,
+      "distributionCountries": ["BR"],
+      "testingInstructions": "Configure a variável de ambiente ANTHROPIC_API_KEY na função Lambda antes de testar.",
+      "category": "KNOWLEDGE_AND_TRIVIA"
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda"
+        }
+      }
+    },
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "locales": {
+        "pt-BR": {
+          "privacyPolicyUrl": "",
+          "termsOfUseUrl": ""
+        }
+      }
+    }
+  }
+}
