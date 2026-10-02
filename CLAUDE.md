@@ -122,7 +122,7 @@ mind-certificados/
 │   ├── page.tsx                ← redir login ou dashboard
 │   ├── login/page.tsx          ← Google OAuth button + error display
 │   ├── auth/callback/route.ts  ← OAuth callback, checa cert_allowed_users
-│   ├── claim/[token]/page.tsx  ← redir pra edge function claim-certificate
+│   ├── claim/[token]/route.ts  ← proxy da edge function claim-certificate (serve HTML pela Vercel)
 │   └── dashboard/
 │       ├── layout.tsx          ← sidebar + content
 │       ├── page.tsx            ← redir → /dashboard/templates
