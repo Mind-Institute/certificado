@@ -414,7 +414,7 @@ app/
 │   ├── historico/page.tsx  ← Tab 3: lista de recipients com filtros (realtime)
 │   └── admin/page.tsx      ← Tab 4: gerenciar cert_allowed_users (só admins)
 │
-└── claim/[token]/page.tsx  ← rota pública do link do email anúncio (redir pra edge function)
+└── claim/[token]/route.ts  ← rota pública do link do email anúncio (proxy da edge function: Supabase serve HTML como text/plain)
 
 components/
 ├── sidebar.tsx                  ← sidebar com logo, nav, contador Resend, sign out
